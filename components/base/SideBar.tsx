@@ -1,23 +1,36 @@
-const myItems = ["Login", "Home", "Dash 1", "Dash 2"];
+import Link from "next/link";
 
-
+const myItems = [
+  {
+    name: 'Login',
+    url: '/login'
+  },
+  {
+    name: 'Home',
+    url: '/home'
+  },
+  {
+    name: 'Dash 1',
+    url: '/dash1'
+  },
+  {
+    name: 'Dash 2',
+    url: '/dash2'
+  }
+]
+// flex h-screen
 const SideBar = () => {
   return (
-    <div className="flex h-screen bg-gray-800 text-white">
-      {/* Sidebar */}
-      <div className="w-64 p-4 bg-gray-900">
-        {/* Sidebar content goes here */}
-        <h1 className="text-2xl font-bold mb-4">Sidebar zzzz</h1>
-        {/* Add your sidebar links or other content here */}
+    <div className="w-64 p-4 bg-gray-900 text-white">
+      <h1 className="text-2xl font-bold mb-4">Enterprise</h1>
         <ul className='p-5'>
           {myItems.map((item, i) => (
-            <li key={i}>{item}</li>
+            <Link key={i} href={item.url}>
+              <li >{item.name}</li>
+            </Link>
           ))}
-
-        </ul>
-      </div>
+      </ul>
     </div>
-
   )
 }
 
