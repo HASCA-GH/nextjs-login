@@ -6,17 +6,17 @@ const myItems = [
     url: '/login'
   },
   {
-    name: 'Home',
-    url: '/home'
-  },
-  {
-    name: 'Dash 1',
+    name: 'Dashoard 1',
     url: '/dash1'
   },
   {
-    name: 'Dash 2',
+    name: 'Dashoard 2',
     url: '/dash2'
-  }
+  },
+  {
+    name: 'Dashoard 3',
+    url: '/dash3'
+  },
 ]
 // flex h-screen
 const SideBar = () => {
