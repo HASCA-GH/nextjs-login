@@ -1,12 +1,10 @@
-import { UserButton, auth, useAuth } from "@clerk/nextjs";
+import { UserButton, auth } from "@clerk/nextjs";
 import Link from "next/link";
-
 
 type myItemsType = {
   name: string;
   url: string;
 };
-
 const myItems = [
   {
     name: 'Home page (Public)',
@@ -32,15 +30,15 @@ const myItems = [
     name: 'Sign up (Public)',
     url: '/sign-up'
   },
-  {
-    name: 'Profile(Public)',
-    url: '/profile'
-  },
+  // {
+  //   name: 'Profile(Public)',
+  //   url: '/profile'
+  // },
 ];
 
 const isHomePage = ({ item }: { item: myItemsType }, i: number) => {
   return (
-    <div className={`mb-${item.url === '/' || item.url === '/dash3' ? 8 : 2}`} key={i}>
+    <div className={`mb-${item.url === '/' || item.url === '/dash3' ? 10 : 2}`} key={i}>
       <Link href={item.url}>
         <li>{item.name}</li>
       </Link>
@@ -48,19 +46,43 @@ const isHomePage = ({ item }: { item: myItemsType }, i: number) => {
   )
 };
 
-const SideBar = () => {
+const SideBar = async () => {
+  const { userId } = await auth()
+  const isAuth = !!userId
+
   return (
     <div className="w-80 min-w-fit p-4 bg-gray-900 text-white">
       <h1 className="text-2xl font-bold mb-4">Enterprise</h1>
-      <ul className='p-5'>
-        {myItems.map((item, i) => (
-          <div key={i}>
-            {isHomePage({ item }, i)}
-          </div>
-        ))}
-      </ul>
+      <div className='p-5 bg-slate-500'>
+        {!isAuth
+          ?
+          myItems.map((item, i) => (
+            <ul className={`mb-${item.url === '/' || item.url === '/dash3' ? 10 : 1}`} key={i}>
+              <Link href={item.url}>
+                <li className="mb-2">{item.name}</li>
+              </Link>
+            </ul>
+
+          ))
+          :
+          <ul className='mb-8' key='p'>
+            <Link href='/profile'>
+              <li className="mb-2">Profile</li>
+            </Link>
+            <li>
+              <UserButton afterSignOutUrl="/" />
+            </li>
+
+          </ul>
+        }
+
+      </div>
     </div>
   );
 };
 
 export default SideBar;
+
+// <div key={i}>
+//   {isHomePage({ item }, i)}
+// </div>          
