@@ -24,6 +24,8 @@ export default function RootLayout({
         {/* <body className={inter.className} ></body> */}
         <body className='flex flex-row' >
           <SideBar />
+          <div className='mx-36 text-2xl flex flex-col item-center text-center mt-12'>Hello
+          </div>
           {children}
         </body>
       </html>

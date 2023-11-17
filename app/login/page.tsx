@@ -3,7 +3,7 @@ const page = () => {
     return (
         <div className='w-full h-screen'>
             <div className='flex text-2xl font-bold text-white gap-5 p-5 justify-center' >
-                <div className='bg-indigo-500 p-4 rounded'>Login Page</div>
+                <div className='bg-indigo-500 p-4 rounded'>Login Page - (Public)</div>
             </div>
             <form className="flex justify-center gap-2 px-4">
                 <div className="flex flex-wrap -mx-3 mb-6">
