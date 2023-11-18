@@ -22,11 +22,11 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         {/* <body className={inter.className} ></body> */}
-        <body className='flex flex-row' >
+        <body className='flex flex-row'>
           <SideBar />
-          <div className='mx-36 text-2xl flex flex-col item-center text-center mt-12'>Hello
-          </div>
+          <div className='mx-auto text-2xl flex flex-col item-center text-center mt-12'>
           {children}
+          </div>
         </body>
       </html>
     </ClerkProvider>
